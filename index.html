@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="angularjs-starter">
+   <head lang="en">
+    <meta charset="utf-8">
+    <title>8enmann test</title>
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap-responsive.min.css" rel="stylesheet">
+    
+    <!-- required libraries -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    
+    <!-- optional libraries -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.0.0/moment.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/0.6.0/fastclick.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/prettify/r224/prettify.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js"></script>
+    <script src="https://apis.google.com/js/client.js?onload=init"></script>
+  </head>
+   <body>
+     <div class="container" ng-controller="MainCtrl">
+       <a class="btn pull-right" ng-hide="is_backend_ready" ng-click="auth()">Sign in</a>
+       <a class="btn pull-right" ng-show="is_backend_ready" ng-click="unauth()">Sign out</a>
+       <h2>Guestbook</h2>
+       <div  ng-show="is_backend_ready">
+       <form ng-submit="insert()">
+         <input type="text" ng-model="content" size="50"><br>
+         <input type="submit" hint="content" class="btn btn-primary" value="Post">
+       </form>
+       <ul>
+         <li ng-repeat="message in messages | orderBy:'created_at'">
+           {{message.created_at|date:'short'}} {{message.created_by.email}}: {{message.content}}
+         </li>
+       </ul>
+       <a ng-click="list()" class="btn">Rotate page</a>
+       </div>
+     </div>
+   </body>
+</html>
