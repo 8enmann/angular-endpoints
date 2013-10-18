@@ -1,6 +1,7 @@
 function init() {
   window.init();
 }
+//var apiRoot = 'https://8enmann.appspot.com/_ah/api';
 var apiRoot = 'http://localhost:8888/_ah/api';
 var app = angular.module('angularjs-starter', []);
 var SCOPES = ['https://www.googleapis.com/auth/userinfo.email'];
@@ -44,6 +45,7 @@ app.controller('MainCtrl', function($scope, $window, $location) {
     message = {
       "content" : $scope.content
     };
+    
     gapi.client.guestbook.messages.insert(message).execute(function(resp) {
       $scope.messages.push(resp);
       $scope.$apply();

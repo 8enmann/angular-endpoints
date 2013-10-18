@@ -12,5 +12,3 @@ Then visit http://localhost:7777 in a browser.
 
 TODO:
 Make auth lazier by storing the auth token and then refreshing in the background. Consider using routes to make a separate auth page.
-Upgrade to Angular 1.2
-Upgrade to Bootstrap 3
