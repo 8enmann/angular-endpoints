@@ -16,7 +16,7 @@ app.controller('MainCtrl', function($scope, $window, $location) {
     gapi.auth.setToken(null);
     $scope.is_backend_ready = undefined;
   };
-  
+
   $scope.load_guestbook_lib = function() {
     var apisToLoad;
     var callback = function() {
@@ -24,7 +24,7 @@ app.controller('MainCtrl', function($scope, $window, $location) {
         signin(true, $scope.userAuthed);
       }
     }
-    
+
     apisToLoad = 2; // must match number of calls to gapi.client.load()
     gapi.client.load('guestbook', 'v1', callback, apiRoot);
     gapi.client.load('oauth2', 'v2', callback);
@@ -35,34 +35,37 @@ app.controller('MainCtrl', function($scope, $window, $location) {
     $scope.is_backend_ready = true;
     $scope.list();
   }
-  
+
   $window.init = function() {
     console.log('called init');
     $scope.$apply($scope.load_guestbook_lib);
   };
-  
+
   $scope.insert = function() {
     message = {
       "content" : $scope.content
     };
-    
+
     gapi.client.guestbook.messages.insert(message).execute(function(resp) {
       $scope.messages.push(resp);
       $scope.$apply();
       $scope.list();
     });
   };
-  
+
   $scope.list = function() {
     console.log('listing');
-    gapi.client.guestbook.messages.list({limit: 10, pageToken: $scope.nextPageToken}).execute(function(resp) {
+    var payload = {limit: 10};
+    if ($scope.nextPageToken) {
+      payload.pageToken = $scope.nextPageToken;
+    }
+    gapi.client.guestbook.messages.list(payload).execute(function(resp) {
       console.log(resp);
       $scope.messages = resp.items;
       $scope.$apply();
       $scope.nextPageToken = resp.nextPageToken;
     });
   };
-  
 });
 
 function signin(mode, callback) {
@@ -71,4 +74,3 @@ function signin(mode, callback) {
     scope: SCOPES, immediate: mode},
     callback);
 }
-

@@ -3,14 +3,14 @@
    <head lang="en">
     <meta charset="utf-8">
     <title>8enmann test</title>
-    
+
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
-    
+
     <!-- required libraries -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-    
+
     <link rel="stylesheet" href="style.css">
     <script src="app.js"></script>
     <script src="https://apis.google.com/js/client.js?onload=init"></script>
@@ -44,6 +44,7 @@
            </div>
          </form>
          <ul class="list-unstyled well" style="margin-top:20px;">
+           <li ng-hide="messages">No messages</li>
            <li ng-repeat="message in messages | orderBy:'created_at'">
              {{message.created_at|date:'short'}} {{message.created_by.email}}: {{message.content}}
            </li>

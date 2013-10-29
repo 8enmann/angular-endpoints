@@ -9,6 +9,15 @@ handlers:
 - url: /_ah/spi/.*
   script: main.application
 
+# https://developers.google.com/appengine/docs/python/config/appconfig#Static_File_Handlers
+- url: /
+  static_files: index.html
+  upload: index.html
+
+- url: /(.*\.(js|html|css))
+  static_files: \1
+  upload: (.*\.(js|html|css|png))
+
 libraries:
 # Needed for endpoints/users_id_token.py.
 - name: pycrypto
