@@ -14,9 +14,21 @@ handlers:
   static_files: index.html
   upload: index.html
 
-- url: /(.*\.(js|html|css))
+- url: /favicon.ico
+  static_files: favicon.ico
+  upload: favicon.ico
+  expiration: 7d
+
+- url: /bower_components/(.*)
+  static_files: bower_components/\1
+  upload: bower_components/.*
+  expiration: 7d
+
+- url: /(.*\.(js|html|css|ico))
   static_files: \1
-  upload: (.*\.(js|html|css|png))
+  upload: (.*\.(js|html|css|png|ico))
+
+
 
 libraries:
 # Needed for endpoints/users_id_token.py.

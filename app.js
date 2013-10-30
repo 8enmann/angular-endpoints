@@ -1,9 +1,12 @@
 function init() {
   window.init();
 }
-//var apiRoot = 'https://8enmann.appspot.com/_ah/api';
-var apiRoot = 'http://localhost:8888/_ah/api';
-var app = angular.module('angularjs-starter', []);
+var apiRoot = 'https://8enmann.appspot.com/_ah/api';
+//var apiRoot = 'http://localhost:8888/_ah/api';
+var app = angular.module('angularjs-starter', [])
+  .run(function () {
+    FastClick.attach(document.body);
+  });;
 var SCOPES = ['https://www.googleapis.com/auth/userinfo.email'];
 var CLIENT_ID = '465918363.apps.googleusercontent.com';
 

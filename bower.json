@@ -1,0 +1,22 @@
+{
+  "name": "angular-endpoints",
+  "version": "0.0.0",
+  "homepage": "https://github.com/8enmann/angular-endpoints",
+  "description": "Sample project using angular, Google cloud endpoints, and endpoints-proto-datastore",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-touch": "~1.2.0-rc.3",
+    "angular-route": "~1.2.0-rc.3",
+    "angular-animate": "~1.2.0-rc.3",
+    "bootstrap": "~3.0.1",
+    "fastclick": "~0.6.10"
+  }
+}

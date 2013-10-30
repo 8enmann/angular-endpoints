@@ -1,22 +1,42 @@
 <!DOCTYPE html>
 <html ng-app="angularjs-starter">
-   <head lang="en">
+  <head lang="en">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>8enmann test</title>
-
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- required libraries -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-
-    <link rel="stylesheet" href="style.css">
-    <script src="app.js"></script>
-    <script src="https://apis.google.com/js/client.js?onload=init"></script>
+    <style>
+      .splash {
+        width: 100%;
+        /* 100% is not enough for Android 2.3 when the keyboard was shown
+        before the refresh ... */
+        height: 500px;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: none;
+      }
+      [ng-cloak].splash {
+        display: block !important;
+      }
+      [ng-cloak] {
+        display: none
+      }
+      .splash {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-weight: 500;
+        line-height: 1.1;
+        background-color: whitesmoke;
+        text-align: center;
+        padding-top: 75px;
+      }
+    </style>
   </head>
    <body ng-controller="MainCtrl">
-     <nav class="navbar navbar-default">
+     <div class="splash" ng-cloak>
+       <h1>Loading ...</h1>
+     </div>
+     <nav class="navbar navbar-default" ng-cloak>
        <div class="navbar-header">
          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse-target">
            <span class="sr-only">Toggle navigation</span>
@@ -33,7 +53,7 @@
          </div>
        </div>
      </nav>
-     <div class="container">
+     <div class="container" ng-cloak>
        <div  ng-show="is_backend_ready">
          <form class="form-inline" ng-submit="insert()" role="form">
            <div class="input-group">
@@ -52,5 +72,19 @@
          <button ng-click="list()" class="btn">Rotate page</button>
        </div>
      </div>
+
+     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+     <link rel="stylesheet" href="app.css">
+
+     <script src="bower_components/fastclick/lib/fastclick.js"></script>
+     <script src="bower_components/angular/angular.js"></script>
+     <script src="bower_components/angular-route/angular-route.js"></script>
+     <script src="bower_components/angular-animate/angular-animate.js"></script>
+     <script src="bower_components/angular-touch/angular-touch.js"></script>
+     <script src="bower_components/jquery/jquery.min.js"></script>
+     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+     <script src="app.js"></script>
+     <script src="https://apis.google.com/js/client.js?onload=init"></script>
    </body>
 </html>
